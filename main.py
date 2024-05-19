@@ -2,8 +2,8 @@
 def main():
     book_path = "./books/frankenstein.txt"
     book_contents = read_book_contents(book_path)
-    word_count = count_words(book_contents)
-    print(f"{word_count} words found in the document")
+    letter_count = count_letters(book_contents)
+    print(letter_count)
 
 def read_book_contents(path):
     file_contents = ""
@@ -14,5 +14,19 @@ def read_book_contents(path):
 def count_words(string):
     word_array = string.split()
     return len(word_array)
+
+def count_letters(string):
+    letter_dict = {}
+    word_array = string.split()
+    for word in word_array:
+        new_word = word.lower()
+        for letter in new_word:
+            if letter in letter_dict:
+                letter_dict[letter] += 1
+            else:
+                letter_dict[letter] = 1
+    return letter_dict
+
+
 
 main()
