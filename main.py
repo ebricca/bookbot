@@ -2,7 +2,7 @@
 def main():
     book_path = "./books/frankenstein.txt"
     book_contents = read_book_contents(book_path)
-    letter_count = count_letters(book_contents)
+    letter_count = get_chars_dict(book_contents)
     print(letter_count)
 
 def read_book_contents(path):
@@ -11,21 +11,19 @@ def read_book_contents(path):
         file_contents = f.read()
     return file_contents
 
-def count_words(string):
+def get_num_words(string):
     word_array = string.split()
     return len(word_array)
 
-def count_letters(string):
-    letter_dict = {}
-    word_array = string.split()
-    for word in word_array:
-        new_word = word.lower()
-        for letter in new_word:
-            if letter in letter_dict:
-                letter_dict[letter] += 1
-            else:
-                letter_dict[letter] = 1
-    return letter_dict
+def get_chars_dict(text):
+    chars_dict = {}
+    for c in text:
+        lowered = c.lower()
+        if lowered in chars_dict:
+            chars_dict[lowered] += 1
+        else:
+            chars_dict[lowered] = 1
+    return chars_dict
 
 
 
